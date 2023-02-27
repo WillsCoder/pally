@@ -59,7 +59,7 @@ export const BuyRetailMobile = () => {
                                         </span>
                                     </div>
                                 </a>
-                                <Image src={item.product_images[0].imagePath} alt="Product-img1" width={"300"} height={"180"} className='w-100 h-100 product-img mb-3'/>
+                                <Image src={item.product_images[0].imagePath} alt="Product-img1" width={"300"} height={"180"} className='w-100 h-100'/>
                             </div>
 
                             <div className="pally-content">

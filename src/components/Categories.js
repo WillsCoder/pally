@@ -88,7 +88,7 @@ export const Categories = () => {
                             //   }}
                               style={{
                                 "--swiper-navigation-color": "wine",
-                                "--swiper-navigation-size": "20px",
+                                "--swiper-navigation-size": "25px",
                               }}
                             className="carousel slide home_slider"
                             >
