@@ -236,7 +236,7 @@ export const Header = () => {
                             <div className="saerch-bar">
                                 <div>
                                     <BsSearch className="pe-2 fs-3"/>
-                                    <input type="text" placeholder="Search " name="search"/>
+                                    <input type="text" placeholder="Search " name="search" className="bg-white"/>
                                 </div>
                                 {/* <!-- <button className="yellow-bg">SEARCH</button> --> */}
                             </div>
