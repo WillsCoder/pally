@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { BsFilter } from 'react-icons/bs'
 import { BuyBulk } from './BuyBulk';
+import { BuyBulkMobile } from './BuyBulkMobile';
 import { BuyRetailMobile } from './BuyRetailMobile';
 
 export const MobileProducts = () => {
@@ -102,7 +103,7 @@ export const MobileProducts = () => {
         </div>
         <div className='mt-4 px-2 mobile-display-products'>
             {
-                open === 1 ? <div className='container'><BuyBulk/></div> : ""
+                open === 1 ? <div className='container'><BuyBulkMobile/></div> : ""
             }
             {
                 open === 2 ? <div className='container'><BuyRetailMobile/></div> : ""

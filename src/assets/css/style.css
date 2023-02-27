@@ -3483,7 +3483,9 @@ a.red-bg:hover {
 }
 
 .load-more:hover {
-    color: white;
+    background-color: #B3561B;
+    color:white !important;
+    transition: .5 ease;
 }
 
 .load-more:hover:before {

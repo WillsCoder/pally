@@ -1,11 +1,10 @@
-import { LoadMoreBtn } from '@/assets/Reusble/LoadMore';
 import axios from 'axios';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { BsArrowUp } from 'react-icons/bs';
 import { MdFavoriteBorder } from 'react-icons/md';
 
-export const BuyBulk = () => {
+export const BuyBulkMobile = () => {
 
     const [offset1, setOffset1] = useState([])
     const [offset2, setOffset2] = useState([])
@@ -14,8 +13,6 @@ export const BuyBulk = () => {
     const [offset5, setOffset5] = useState([])
     // const [bulk, setBulk] = useState([]);
     const [loading, setLoading] = useState(false)
-    const [isCompleted, setIsCompleted] = useState(false)
-    const [count, setCount] = useState(12)
 
     const fetchBulk = async () => {
         setLoading(true)
@@ -89,16 +86,6 @@ export const BuyBulk = () => {
         setLoading(false)
     };
     const bulks = [...offset1,...offset2,...offset3,...offset4,...offset5]
-
-    const LoadMore = () => {
-        setCount(count + 12)
-        if (count >= bulks.length) {
-          setIsCompleted(true)
-        } else {
-          setIsCompleted(false)
-        }
-      }
-
     useEffect(() => {
         fetchBulk()
         fetchBulk2()
@@ -120,7 +107,7 @@ export const BuyBulk = () => {
         <p><span className='fw-bold'>{bulks.length}</span> Available Products</p>        
         <div className='products-display'>
         {
-            bulks.length > 0? bulks.slice(0, count).map((item, index) => {
+            bulks.length > 0? bulks.map((item, index) => {
                 return (
                         <div className="pally-inner " key={index}>
                             <div className="products-img-wrapper  mb-3 pointer">
@@ -157,9 +144,6 @@ export const BuyBulk = () => {
             "No product Available"
         }
         </div>
-        {isCompleted ? '': (
-          <LoadMoreBtn LoadMore={LoadMore} />
-        )}
 
     </div>
   )

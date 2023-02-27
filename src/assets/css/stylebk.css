@@ -903,7 +903,7 @@ a.red-bg:hover {
 }
 
 .load-more {
-    color: #B3561B;
+    color: #B3561B !important;
     font-weight: 500;
     font-size: 16px;
     background: transparent;
@@ -929,7 +929,9 @@ a.red-bg:hover {
 }
 
 .load-more:hover {
-    color: white;
+        background-color: #B3561B;
+        color:white !important;
+        transition: .5 ease;
 }
 
 .load-more:hover:before {
