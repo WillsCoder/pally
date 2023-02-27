@@ -16,7 +16,7 @@ export default function Home() {
 
 
   return (
-    <main className='bg-white'>
+    <main className='bg-white text-dark'>
       <Header/>
       <Hero/>
       <Categories/>
