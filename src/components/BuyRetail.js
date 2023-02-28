@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { BsArrowUp } from 'react-icons/bs';
 import { MdFavoriteBorder } from 'react-icons/md';
+import { ProductList } from './ProductList';
 
 export const BuyRetail = () => {
 
@@ -248,15 +249,6 @@ export const BuyRetail = () => {
         fetchBulk10()
     }, [])
 
-    const LoadMore = () => {
-        setCount(count + 12)
-        if (count >= bulk.length) {
-          setIsCompleted(true)
-        } else {
-          setIsCompleted(false)
-        }
-      }
-
     if(loading){
         return (
             <div className="gif-loader">
@@ -268,49 +260,7 @@ export const BuyRetail = () => {
   return (
     <div>
         <p><span className='fw-bold'>{total.total_products}</span> Available Products</p>
-        
-        <div className='products-display'>
-        {
-            bulk.length > 0? bulk.slice(0, count).map((item, index) => {
-                return (
-                        <div className="pally-inner " key={index}>
-                            <div className="products-img-wrapper  mb-3 pointer">
-                                <a href="product_detail.html">
-                                    <div className="heart-icon">
-                                        <span className="material-icons">
-                                            <MdFavoriteBorder/>
-                                        </span>
-                                    </div>
-                                </a>
-                                <Image src={item.product_images[0].imagePath} alt="Product-img1" width={"300"} height={"180"} className='w-100 h-100'/>
-                            </div>
-
-                            <div className="pally-content">
-                                <a href="#" className="inner-head">
-                                    <h5 className="mb-2">{item.product_title} </h5>
-                                </a>
-                                <a href="#" className="red-bg">
-                                    <span className="material-icons-outlined">
-                                    <BsArrowUp/>
-                                    </span>9% | <span className="clr-gr">In Season</span></a>
-                                <h5 className="mb-2 mt-2 font-weight-bold simhead">₦{item.product_price} <small>per
-                                        unit</small></h5>
-                                <h6 className="mb-2">Unit Available : {item.unit_available}</h6>
-                                <a href="#" className='text-decoration-none'>
-                                    <button type="button" className="brown-btn px-4 text-uppercase btn-effects pally-slot-btn"><span>BUY SLOT</span></button>
-                                </a>
-                            </div>
-
-                        </div>
-                )
-            })
-            :
-            "No product Available"
-        }
-        </div>
-        {isCompleted ? '': (
-          <LoadMoreBtn LoadMore={LoadMore} />
-        )}
+        <ProductList product={bulk} />    
     </div>
   )
 }

@@ -132,7 +132,7 @@ export const Hero = () => {
                             </div>
                         </div> */}
                     </div>
-                    <div className="col-md-12 col-lg-3 mobilehero-view mt-3">
+                    <div className="col-md-12 col-lg-3 mobilehero-view">
                         <div className="hero-content text-center">
                             <div className="row">
                                 <div className="col-6 col-md-6">

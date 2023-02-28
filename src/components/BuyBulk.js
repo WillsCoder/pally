@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 import { BsArrowUp } from 'react-icons/bs';
 import { MdFavoriteBorder } from 'react-icons/md';
+import { ProductList } from './ProductList';
 
 export const BuyBulk = () => {
 
@@ -12,10 +13,7 @@ export const BuyBulk = () => {
     const [offset3, setOffset3] = useState([])
     const [offset4, setOffset4] = useState([])
     const [offset5, setOffset5] = useState([])
-    // const [bulk, setBulk] = useState([]);
     const [loading, setLoading] = useState(false)
-    const [isCompleted, setIsCompleted] = useState(false)
-    const [count, setCount] = useState(12)
 
     const fetchBulk = async () => {
         setLoading(true)
@@ -90,15 +88,6 @@ export const BuyBulk = () => {
     };
     const bulks = [...offset1,...offset2,...offset3,...offset4,...offset5]
 
-    const LoadMore = () => {
-        setCount(count + 12)
-        if (count >= bulks.length) {
-          setIsCompleted(true)
-        } else {
-          setIsCompleted(false)
-        }
-      }
-
     useEffect(() => {
         fetchBulk()
         fetchBulk2()
@@ -117,50 +106,8 @@ export const BuyBulk = () => {
 
   return (
     <div>
-        <p><span className='fw-bold'>{bulks.length}</span> Available Products</p>        
-        <div className='products-display'>
-        {
-            bulks.length > 0? bulks.slice(0, count).map((item, index) => {
-                return (
-                        <div className="pally-inner " key={index}>
-                            <div className="products-img-wrapper  mb-3 pointer">
-                                <a href="product_detail.html">
-                                    <div className="heart-icon">
-                                        <span className="material-icons">
-                                            <MdFavoriteBorder/>
-                                        </span>
-                                    </div>
-                                </a>
-                                <Image src={item.product_images[0].imagePath} alt="Product-img1" width={"300"} height={"180"} className='w-100 h-100'/>
-                            </div>
-
-                            <div className="pally-content">
-                                <a href="#" className="inner-head">
-                                    <h5 className="mb-2">{item.product_title} </h5>
-                                </a>
-                                <a href="#" className="red-bg">
-                                    <span className="material-icons-outlined">
-                                    <BsArrowUp/>
-                                    </span>9% | <span className="clr-gr">In Season</span></a>
-                                <h5 className="mb-2 mt-2 font-weight-bold simhead">₦{item.product_price} <small>per
-                                        unit</small></h5>
-                                <h6 className="mb-2">Unit Available : {item.unit_available}</h6>
-                                <a href="#" className='text-decoration-none'>
-                                    <button type="button" className="brown-btn px-4 text-uppercase btn-effects pally-slot-btn"><span>BUY SLOT</span></button>
-                                </a>
-                            </div>
-
-                        </div>
-                )
-            })
-            :
-            "No product Available"
-        }
-        </div>
-        {isCompleted ? '': (
-          <LoadMoreBtn LoadMore={LoadMore} />
-        )}
-
+        <p><span className='fw-bold'>{bulks.length}</span> Available Products</p>   
+        <ProductList product={bulks} />    
     </div>
   )
 }
